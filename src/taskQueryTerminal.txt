@@ -1,0 +1,71 @@
+Last login: Mon Mar 25 11:31:32 on console
+ajzatdujseeva@Ajzats-MacBook-Pro ~ % /Library/PostgreSQL/15/scripts/runpsql.sh; exit
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]: postgres
+Password for user postgres:
+psql (15.2)
+Type "help" for help.
+postgres=# create table author (id serial primary key,author_name varchar(50),date_of_birth date,nationality varchar(50));
+CREATE TABLE
+postgres=# alter table author add column email varchar(50);
+ALTER TABLE
+postgres=# alter table author drop column nationality;
+ALTER TABLE
+postgres=# alter table author add unique (email);
+ALTER TABLE
+postgres=# /d
+postgres-# \d
+        List of relations
+ Schema |    Name    |  Type  | Owner
+--------+-------------------+----------+----------
+ public | author      | table  | postgres
+ public | author_id_seq   | sequence | postgres
+ public | students     | table  | postgres
+ public | students_id_seq  | sequence | postgres
+ public | university    | table  | postgres
+ public | university_id_seq | sequence | postgres
+(6 rows)
+postgres-# alter table author alter column author_name set not null;
+ERROR: syntax error at or near "/"
+LINE 1: /d
+    ^
+postgres=# alter table alter column author
+postgres-#
+postgres-#
+postgres-#
+postgres-#
+postgres-#
+postgres-# /d
+postgres-# \d
+        List of relations
+ Schema |    Name    |  Type  | Owner
+--------+-------------------+----------+----------
+ public | author      | table  | postgres
+ public | author_id_seq   | sequence | postgres
+ public | students     | table  | postgres
+ public | students_id_seq  | sequence | postgres
+ public | university    | table  | postgres
+ public | university_id_seq | sequence | postgres
+(6 rows)
+postgres-# alter table alter column author_name set not null
+postgres-# ;
+ERROR: syntax error at or near "column"
+LINE 1: alter table alter column author
+             ^
+postgres=# alter table author alter column author_name set not null;
+ALTER TABLE
+postgres=# alter table author alter column author_name type text;
+ALTER TABLE
+postgres=# create table books (id serial primary key,book_name varchar(50),published_year date,author_id int references author(id));
+CREATE TABLE
+postgres=# insert into author (author_name,date_of_birth,email)values('Chyngyz Aitmatov','1928-12-12','c@gmail.com');
+INSERT 0 1
+postgres=# insert into author (author_name,date_of_birth,email)values('Alykul Osmonov','1928-12-12','a@gmail.com');
+INSERT 0 1
+postgres=# insert into books (book_name,published_year,author_id)values ('Erte kelgen turnalar','1953-03-23',1);
+INSERT 0 1
+postgres=# insert into books (book_name,published_year,author_id)values ('Bukontai','1953-03-23',2);
+INSERT 0 1
+postgres=#
