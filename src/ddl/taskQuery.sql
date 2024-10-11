@@ -48,7 +48,6 @@ alter table students add column email varchar(50);
 
 -- column ga constraint koshtuk
 alter table students add unique (email);
-
 -- alter table students drop constraint email;
 
 -- column dun attyn osgorttuk
